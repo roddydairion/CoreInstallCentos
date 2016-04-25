@@ -95,7 +95,7 @@ main()
 {
 	createWebServices
 	detect_os
-	epel_url = "http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
+	epel_url="http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
 	#yum update
 	#yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
 
