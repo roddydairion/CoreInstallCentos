@@ -85,6 +85,7 @@ cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
 service httpd "\$1"
 service nginx "\$1"
+service mysqld "\$1"
 EOF1
 install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
 fi
@@ -97,56 +98,17 @@ main()
 	detect_os
 	epel_url="http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
 	#yum update
-	#yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
+	#yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
 
 	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+  #sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+
 	#service iptables save
 
 	#sudo /sbin/chkconfig httpd on
 	#sudo /sbin/chkconfig nginx on
+  #sudo /sbin/chkconfig mysqld on
 
-	#sh WebServices.sh start
-
-  echo -n "Enter some text > "
-  read text
-  echo "You entered: $text"
-
-#nano /etc/httpd/conf.d/vhost.conf
-#<VirtualHost *:8080>
-#     ServerAdmin roddy@orange.mu
-#     ServerName roddy.wikaba.com
-#     ServerAlias roddy.wikaba.com
-#     DocumentRoot /var/www/html/roddy.wikaba.com/public_html/
-#     ErrorLog /var/www/html/roddy.wikaba.com/logs/error.log
-#     CustomLog /var/www/html/roddy.wikaba.com/logs/access.log combined
-#     <Directory />
-#     AllowOverride All
-#     </Directory>
-#</VirtualHost>
-
-#Configure Nginx
-#server {
-# listen 80;
-#root /var/www/html/roddy.wikaba.com/public_html;
-# index index.php index.html index.htm;
-#server_name roddy.wikaba.com;
-#location / {
-# try_files $uri $uri/ /index.php;
-# }
-#location ~ \.php$ {
-#
-# proxy_set_header X-Real-IP $remote_addr;
-# proxy_set_header X-Forwarded-For $remote_addr;
-# proxy_set_header Host $host;
-# proxy_pass http://127.0.0.1:8080;
-#
-#}
-#
-#location ~ /\.ht {
-# deny all;
-# }
-#}
-
-
+  ./RunConfig.sh
 }
 main
