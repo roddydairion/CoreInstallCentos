@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo -n "Enter Hostname : "
 read text
 echo "HOSTNAME=$text" >> /etc/sysconfig/network
