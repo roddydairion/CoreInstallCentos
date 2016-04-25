@@ -66,7 +66,7 @@ cd ~
 OUTPUT=""
 OUTPUT=`find -name ".bashrc"`
 echo -e "${OUTPUT}"
-echo "export PATH=/usr/local/bin" >> "${OUTPUT}"
+echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
 
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
