@@ -63,8 +63,8 @@ detect_os ()
 createWebServices()
 {
 cd ~
-bashlocation = find -name ".bashrc"
-echo "export PATH=$PATH:/usr/local/bin" >> $bashlocation
+bashrc = "$(find -name '.bashrc')"
+echo "export PATH=$PATH:/usr/local/bin" >> "${bashrc}"
 
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
@@ -72,10 +72,11 @@ service httpd "$1"
 service nginx "$1"
 EOF1
  
-install ~/WebServices.sh /usr/local/bin/WebServices
+install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
 
-rm -rf WebServices.sh
+sudo rm -rf WebServices.sh
 }
+
 main()
 {
 	createWebServices
@@ -92,5 +93,4 @@ main()
 
 	#sh WebServices.sh start
 }
-
-
+main
