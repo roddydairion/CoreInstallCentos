@@ -76,17 +76,18 @@ else
   echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
 fi
  
-#if [ -f "$file" ]
-#then
-#  echo "$file found"
-#else
-#  echo "$file not found. Create file"
-#cat > /usr/local/bin/WebServices.sh << EOF1
-#!/bin/bash
-#service httpd "\$1"
-#service nginx "\$1"
-#EOF1
-#install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
+if [ -f "$file" ]
+then
+  echo "$file found"
+else
+  echo "$file not found. Create file"
+cat > /usr/local/bin/WebServices.sh << EOF1
+!/bin/bash
+service httpd "\$1"
+service nginx "\$1"
+EOF1
+install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
+fi
 sudo rm -rf /usr/local/bin/WebServices.sh
 }
 
