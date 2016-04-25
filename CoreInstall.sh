@@ -63,8 +63,8 @@ detect_os ()
 createWebServices()
 {
 cd ~
-bashrc = "$(find -name '.bashrc')"
-echo "export PATH=$PATH:/usr/local/bin" >> "${bashrc}"
+OUTPUT = "$(find -name '.bashrc')"
+echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
 
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
