@@ -78,11 +78,11 @@ fi
  
 if [ -f "$file" ]
 then
-  echo "$file found"
+  echo "$file found."
 else
-  echo "$file not found. Create file"
+  echo "$file not found. Creating file."
 cat > /usr/local/bin/WebServices.sh << EOF1
-!/bin/bash
+#!/bin/bash
 service httpd "\$1"
 service nginx "\$1"
 EOF1
@@ -94,17 +94,17 @@ sudo rm -rf /usr/local/bin/WebServices.sh
 main()
 {
 	createWebServices
-	#detect_os
-	#epel_url = "http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
-	#yum update
-	#yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
+	detect_os
+	epel_url = "http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
+	yum update
+	yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
 
-	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-	#service iptables save
+	sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+	service iptables save
 
-	#sudo /sbin/chkconfig httpd on
-	#sudo /sbin/chkconfig nginx on
+	sudo /sbin/chkconfig httpd on
+	sudo /sbin/chkconfig nginx on
 
-	#sh WebServices.sh start
+	sh WebServices.sh start
 }
 main
