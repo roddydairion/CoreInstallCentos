@@ -109,6 +109,6 @@ main()
 	#sudo /sbin/chkconfig nginx on
   #sudo /sbin/chkconfig mysqld on
 
-  /home/Git/CoreInstallCentos/RunConfig.sh
+  source ./RunConfig.sh
 }
 main
