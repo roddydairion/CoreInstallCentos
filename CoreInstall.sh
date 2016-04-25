@@ -66,10 +66,10 @@ createWebServices(){
 	echo "export PATH=$PATH:/usr/local/bin" >> $bashlocation
 
 	cat > /usr/local/bin/WebServices.sh << EOF1
-  	#!/bin/bash
-  	service httpd "$1"
-  	service nginx "$1"
-  	EOF1
+  		#!/bin/bash
+	  	service httpd "$1"
+	  	service nginx "$1"
+	  	EOF1
   
 	#install ~/WebServices.sh /usr/local/bin/WebServices
 
