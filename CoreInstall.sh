@@ -109,6 +109,6 @@ main()
 	#sudo /sbin/chkconfig nginx on
   #sudo /sbin/chkconfig mysqld on
 
-  source RunConfig.sh
+. RunConfig.sh
 }
 main
