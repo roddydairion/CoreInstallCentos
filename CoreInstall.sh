@@ -57,7 +57,7 @@ detect_os ()
   dist="${dist// /}"
 
   echo "Detected operating system as ${os}/${dist}."
-  rpm -Uvh 
+  #rpm -Uvh 
 }
 
 createWebServices(){
@@ -71,9 +71,9 @@ createWebServices(){
 	service nginx "$1"
 	EOF1
 
-	install ~/WebServices.sh /usr/local/bin/WebServices
+	#install ~/WebServices.sh /usr/local/bin/WebServices
 
-	rm -rf WebServices.sh
+	#rm -rf WebServices.sh
 }
 main()
 {
