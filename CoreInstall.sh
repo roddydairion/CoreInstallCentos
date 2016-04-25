@@ -70,7 +70,8 @@ createWebServices(){
 	service httpd "$1"
 	service nginx "$1"
 	EOF1
-
+  
+  #test  
 	#install ~/WebServices.sh /usr/local/bin/WebServices
 
 	#rm -rf WebServices.sh
