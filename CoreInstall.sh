@@ -96,16 +96,16 @@ main()
 	createWebServices
 	detect_os
 	epel_url = "http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
-	yum update
-	yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
+	#yum update
+	#yum install -y nginx nano apacheyum install httpd mod_ssl php php-pear php-devel
 
-	sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-	service iptables save
+	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+	#service iptables save
 
-	sudo /sbin/chkconfig httpd on
-	sudo /sbin/chkconfig nginx on
+	#sudo /sbin/chkconfig httpd on
+	#sudo /sbin/chkconfig nginx on
 
-	sh WebServices.sh start
+	#sh WebServices.sh start
 
   echo "0 is $0, then 1 is $1"
 
