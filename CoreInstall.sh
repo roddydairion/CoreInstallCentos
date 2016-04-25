@@ -107,7 +107,9 @@ main()
 
 	#sh WebServices.sh start
 
-  echo "0 is $0, then 1 is $1 or 2 is $2 or 3 is $3"
+  echo -n "Enter some text > "
+  read text
+  echo "You entered: $text"
 
 #nano /etc/httpd/conf.d/vhost.conf
 #<VirtualHost *:8080>
