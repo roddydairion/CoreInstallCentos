@@ -75,11 +75,8 @@ else
   echo "Writing"
   echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
 fi
-
-
-
  
-if [-f $file];
+if [[ -f "$file" ]];
 then
   echo "$file found"
 else
