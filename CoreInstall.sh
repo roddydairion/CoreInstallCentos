@@ -79,7 +79,7 @@ fi
 
 
  
-if [-f "$file"]
+if [-f $file]
 then
   echo "$file found"
 else
