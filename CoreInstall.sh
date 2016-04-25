@@ -66,12 +66,19 @@ cd ~
 OUTPUT=""
 OUTPUT=`find -name ".bashrc"`
 echo -e "${OUTPUT}"
-echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
+if grep -q "export PATH=$PATH:/usr/local/bin" "${OUTPUT}"
+then
+  echo "Not writing"
+else
+  echo "Writing"
+  echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
+fi
+
 
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
-service httpd '$1'
-service nginx '$1'
+service httpd '\$1'
+service nginx '\$1'
 EOF1
  
 install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
