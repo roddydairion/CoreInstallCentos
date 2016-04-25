@@ -101,14 +101,14 @@ main()
 	#yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
 
 	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-  #sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+  	#sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
 
 	#service iptables save
 
 	#sudo /sbin/chkconfig httpd on
 	#sudo /sbin/chkconfig nginx on
-  #sudo /sbin/chkconfig mysqld on
+  	#sudo /sbin/chkconfig mysqld on
 
-. RunConfig.sh
+	./RunConfig.sh
 }
 main
