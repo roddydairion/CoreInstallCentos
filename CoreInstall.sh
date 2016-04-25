@@ -63,7 +63,7 @@ detect_os ()
 createWebServices()
 {
 
-file = "/usr/local/bin/WebServices"
+file="/usr/local/bin/WebServices"
 cd ~
 OUTPUT=""
 OUTPUT=`find -name ".bashrc"`
