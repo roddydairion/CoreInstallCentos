@@ -65,7 +65,7 @@ createWebServices()
 cd ~
 OUTPUT=""
 OUTPUT=`find -name ".bashrc"`
-echo -e "${OUTPUT}"
+
 if grep -q "export PATH=$PATH:/usr/local/bin" "${OUTPUT}"
 then
   echo "Not writing"
@@ -83,7 +83,7 @@ EOF1
  
 install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
 
-sudo rm -rf WebServices.sh
+sudo rm -rf /usr/local/bin/WebServices.sh
 }
 
 main()
