@@ -70,6 +70,13 @@ EOF
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
+if /bin/grep -q "NameVirtualHost *:8080" "${file}"
+then
+	echo "Name Virtuals Host exists."
+else
+ sed -i '1s/^/NameVirtualHost *:80\n/' "${file}"
+fi
+
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
 then
   echo -e "Existing Apache configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT\n\n"
