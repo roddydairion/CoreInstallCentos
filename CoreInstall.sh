@@ -64,17 +64,17 @@ createWebServices()
 {
 
 file="/usr/local/bin/WebServices"
-cd ~
-OUTPUT=""
-OUTPUT=`find -name ".bashrc"`
+#cd ~
+#OUTPUT=""
+#OUTPUT=`find -name ".bashrc"`
 
-if grep -q "export PATH=$PATH:/usr/local/bin" "${OUTPUT}"
-then
-  echo "Not writing"
-else
-  echo "Writing"
-  echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
-fi
+#if grep -q "export PATH=$PATH:/usr/local/bin" "${OUTPUT}"
+#then
+#  echo "Not writing"
+#else
+#  echo "Writing"
+#  echo "export PATH=$PATH:/usr/local/bin" >> "${OUTPUT}"
+#fi
  
 if [ -f "$file" ]
 then
