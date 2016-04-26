@@ -81,19 +81,19 @@ if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
 then
   echo -e "Existing Apache configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT\n\n"
 else
-/bin/cat <<EOF >> "$file"
-#Creating apache config for Vhost $PROJECT
-<VirtualHost *:8080>
-     ServerAdmin $EMAIL
-     ServerName $PATH
-     ServerAlias $PATH
-     DocumentRoot $PATH/$PROJECT/public_html/
-     ErrorLog $PATH/$PROJECT/logs/error.log
-     CustomLog $PATH/$PROJECT/logs/access.log combined
-     <Directory />
-     AllowOverride All
-     </Directory>
-</VirtualHost>
+	/bin/cat <<EOF >> "$file"
+	#Creating apache config for Vhost $PROJECT
+	<VirtualHost *:8080>
+	     ServerAdmin $EMAIL
+	     ServerName $PATH
+	     ServerAlias $PATH
+	     DocumentRoot $PATH/$PROJECT/public_html/
+	     ErrorLog $PATH/$PROJECT/logs/error.log
+	     CustomLog $PATH/$PROJECT/logs/access.log combined
+	     <Directory />
+	     AllowOverride All
+	     </Directory>
+	</VirtualHost>
 EOF
 fi
 
