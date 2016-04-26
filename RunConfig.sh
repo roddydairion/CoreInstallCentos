@@ -29,7 +29,7 @@ preConfig ()
 	done
 
 	echo "Select an IP address to assign to domain name/project name: "
-	select ip in $(sbin/ifconfig | bin/awk '/inet addr/{print substr($2,6)}'); do 
+	select ip in `sbin/ifconfig | bin/awk '/inet addr/{print substr($2,6)}'`; do 
 	if [ "$ip" = "exit" ]
 	then
 		exit 0
