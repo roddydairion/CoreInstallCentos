@@ -55,7 +55,7 @@ echo "IP Assigned         : $ip"
 echo -n "Are you sure you want to apply the configuration above (Y/n)?"
 read text
 choice="${text^^}"
-if [ $choice = "Y"]
+if [ $choice == "Y"]
 then
 
 sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf 
@@ -119,7 +119,7 @@ location ~ /\.ht {
  }
 }
 EOF
-elif [ $choice = "N"]
+elif [ $choice == "N"]
 then
 	preConfig
 fi
