@@ -7,13 +7,12 @@ if [ -z "$text"]
 then
 	echo "Unchanged hostname"
 else
-	#echo "HOSTNAME=$text" >> /etc/sysconfig/network
-	#hostname "$text"
+	echo "HOSTNAME=$text" >> /etc/sysconfig/network
+	hostname "$text"
 fi
 
 echo -n "Enter path to DocumentRoot (/var/www/html/):"
 read text
-
 if [ -z "$text" ]
 then
 	path="/var/www/html"
