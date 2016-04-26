@@ -70,14 +70,12 @@ EOF
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-#if [ -f "$file" ]
-#then
-#  echo "$file Vhost file found."
-#else
-#  echo "$file not found. Creating file."
+if grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
+then
+  echo "Skipping Configuration on Apache Virtuals Host for $PROJECT"
+else
 /bin/cat <<EOF >> "$file"
-
-#Creating config for Vhost $PROJECT
+#Creating apache config for Vhost $PROJECT
 <VirtualHost *:8080>
      ServerAdmin $EMAIL
      ServerName $PATH
@@ -90,11 +88,19 @@ file="/etc/httpd/conf.d/vhost.conf"
      </Directory>
 </VirtualHost>
 EOF
+fi
+
+
 ###Configuration of Nginx Virtual host
 file="/etc/nginx/conf.d/virtual.conf"
+
+if grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
+then
+  echo "Skipping Configuration on Nginx Virtuals Host for $PROJECT"
+else
 /bin/cat <<EOF >> "$file"
 
-#Creating config for Vhost $PROJECT
+#Creating nginx config for Vhost $PROJECT
 server {
  listen 80;
 root $PATH/$PROJECT/public_html/;
@@ -117,6 +123,7 @@ location ~ /\.ht {
  }
 }
 EOF
+fi
 elif [ $choice == "N" ]
 then
 	preConfig
