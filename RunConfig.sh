@@ -28,9 +28,9 @@ preConfig ()
 		echo "You need to enter an email address!"
 	done
 
-	
+
 	echo "Select an IP address to assign to domain name/project name: "
-	select ip in $(ifconfig | awk '/inet addr/{print substr($2,6)}'); do 
+	select ip in `ifconfig | awk '/inet addr/{print substr($2,6)}'`; do 
 	if [ "$ip" = "exit" ]
 	then
 		exit 0
