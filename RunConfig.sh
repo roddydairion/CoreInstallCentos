@@ -1,5 +1,5 @@
 #!/bin/bash
-clear
+
 echo -n "Enter Hostname (Leave blank if you do not wish to change current hostname): "
 read text
 if [ -z "$text"]
@@ -9,6 +9,22 @@ else
 	echo "HOSTNAME=$text" >> /etc/sysconfig/network
 	hostname "$text"
 fi
+
+echo -n "Enter path to DocumentRoot (/var/www/html/):"
+read text
+if [ -z "$text" ]
+then
+	path="/var/www/html"
+else
+	path="$text"
+fi
+
+echo -n "Enter domain name/project name (eg: example.com, project1.example.com): "
+read text
+while [ -z "$text" ]
+do
+	echo -n "Enter domain name/project name (eg: example.com, project1.example.com): "
+done
 
 file="/etc/httpd/conf.d/vhost.conf"
 

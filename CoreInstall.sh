@@ -94,6 +94,7 @@ sudo rm -rf /usr/local/bin/WebServices.sh
 
 main()
 {
+  clear
 	createWebServices
 	detect_os
 	epel_url="http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
