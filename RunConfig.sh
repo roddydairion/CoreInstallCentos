@@ -72,7 +72,7 @@ file="/etc/httpd/conf.d/vhost.conf"
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
 then
-  echo "Skipping Configuration on Apache Virtuals Host for $PROJECT"
+  echo -e "Existing configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT"
 else
 /bin/cat <<EOF >> "$file"
 #Creating apache config for Vhost $PROJECT
@@ -96,7 +96,7 @@ file="/etc/nginx/conf.d/virtual.conf"
 
 if /bin/grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
 then
-  echo "Skipping Configuration on Nginx Virtuals Host for $PROJECT"
+  echo -e "Existing configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT"
 else
 /bin/cat <<EOF >> "$file"
 
