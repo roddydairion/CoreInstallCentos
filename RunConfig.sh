@@ -74,7 +74,7 @@ if /bin/grep -q "NameVirtualHost *:8080" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
- $(/bin/sed -i '1s/^/NameVirtualHost *:80\n/' "${file}")
+ 	$(/bin/sed -i '1s/^/NameVirtualHost *:80\n/' "${file}")
 fi
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
@@ -105,34 +105,34 @@ if /bin/grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
 then
   echo -e "Existing Nginx configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT\n\n"
 else
-/bin/cat <<EOF >> "$file"
+	/bin/cat <<EOF >> "$file"
 
-#Creating nginx config for Vhost $PROJECT
-server {
- listen 80;
-root $PATH/$PROJECT/public_html/;
- index index.php index.html index.htm;
-server_name $PROJECT;
-location / {
- try_files $uri $uri/ /index.php;
- }
-location ~ \.php$ {
+	#Creating nginx config for Vhost $PROJECT
+	server {
+	 listen 80;
+	root $PATH/$PROJECT/public_html/;
+	 index index.php index.html index.htm;
+	server_name $PROJECT;
+	location / {
+	 try_files $uri $uri/ /index.php;
+	 }
+	location ~ \.php$ {
 
- proxy_set_header X-Real-IP $remote_addr;
- proxy_set_header X-Forwarded-For $remote_addr;
- proxy_set_header Host $host;
- proxy_pass http://127.0.0.1:8080;
+	 proxy_set_header X-Real-IP $remote_addr;
+	 proxy_set_header X-Forwarded-For $remote_addr;
+	 proxy_set_header Host $host;
+	 proxy_pass http://127.0.0.1:8080;
 
-}
+	}
 
-location ~ /\.ht {
- deny all;
- }
-}
+	location ~ /\.ht {
+	 deny all;
+	 }
+	}
 EOF
 fi
-$(WebServices restart)
-echo "Configuration completed."
+	$(WebServices restart)
+	echo "Configuration completed."
 elif [ $choice == "N" ]
 then
 	preConfig
