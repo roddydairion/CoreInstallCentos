@@ -30,18 +30,18 @@ preConfig ()
 
 
 	echo "Select an IP address to assign to domain name/project name: "
-	select ip in `ifconfig | awk '/inet addr/{print substr($2,6)}'`; do 
-	if [ "$ip" = "exit" ]
-	then
-		exit 0
-	elif [ -n "$ip" ]
-	then
-		echo $ip
-		break
-	else
-		echo "Invalid choice"
-	fi
-	done
+select ip in `ifconfig | awk '/inet addr/{print substr($2,6)}'`; do 
+if [ "$ip" = "exit" ]
+then
+	exit 0
+elif [ -n "$ip" ]
+then
+	echo $ip
+	break
+else
+	echo "Invalid choice"
+fi
+done
 }
 
 writeConfig(){
