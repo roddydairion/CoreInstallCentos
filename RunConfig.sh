@@ -30,7 +30,7 @@ preConfig ()
 
 
 	echo "Select an IP address to assign to domain name/project name: "
-	./ListIP.sh
+	./runListIP.sh
 }
 
 writeConfig(){
