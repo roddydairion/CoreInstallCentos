@@ -30,8 +30,8 @@ preConfig ()
 
 
 	echo "Select an IP address to assign to domain name/project name: "
-	listIP= `ifconfig | awk '/inet addr/{print substr($2,6)}'`
-	select ip in $listIP; do 
+	listIP= $(ifconfig | awk '/inet addr/{print substr($2,6)}')
+	select ip in "$listIP"; do 
 	if [ "$ip" = "exit" ]
 	then
 		exit 0
