@@ -74,7 +74,7 @@ if /bin/grep -q "NameVirtualHost *:8080" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
- sed -i '1s/^/NameVirtualHost *:80\n/' "${file}"
+ $(/bin/sed -i '1s/^/NameVirtualHost *:80\n/' "${file}")
 fi
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
