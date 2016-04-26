@@ -1,12 +1,12 @@
 #!/bin/bash
 preConfig ()
 {
-	hostnameDisplay=hostname -f
+	hostnameDisplay=$(hostname -f)
 	echo -n "Enter Hostname (Leave blank if you do not wish to change current hostname. Current Hostname $hostnameDisplay): "
 	read text
 	if [ -z "$text"]
 	then
-		echo "Unchanged hostname"
+		echo "Unchanged hostname $hostnameDisplay"
 	else
 		hNAME="$text"
 	fi
