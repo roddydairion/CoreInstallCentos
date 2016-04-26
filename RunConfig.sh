@@ -61,7 +61,7 @@ then
 $(/bin/sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf)
 
 $(/bin/mkdir "$PATH/$PROJECT/public_html/")
-$(mkdir "$PATH/$PROJECT/logs/")
+$(/bin/mkdir "$PATH/$PROJECT/logs/")
 
 cat <<EOF >> /etc/hosts
 "$ip    $PROJECT"
