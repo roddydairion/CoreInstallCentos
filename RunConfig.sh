@@ -117,11 +117,11 @@ location ~ /\.ht {
  }
 }
 EOF
-}
 elif [ "${text^^}" = "N"]
 then
 	preConfig
 fi
+}
 
 #echo "You entered: $text"
 #nano /etc/httpd/conf.d/vhost.conf
