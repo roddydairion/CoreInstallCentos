@@ -19,13 +19,11 @@ else
 	path="$text"
 fi
 
-echo -n "Enter domain name/project name (eg: example.com, project1.example.com): "
-read text
-while [[ -z "$text" ]]
-do
-  clear
-  read -s -p "Enter domain name/project name (eg: example.com, project1.example.com): "
+while read -s -p "Enter domain name/project name (eg: example.com, project1.example.com): " NEWPASS && [[ -z "$NEWPASS" ]] ; do
+ echo "No-no, please, no blank passwords!"
 done
+
+
 
 file="/etc/httpd/conf.d/vhost.conf"
 
