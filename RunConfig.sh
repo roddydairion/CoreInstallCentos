@@ -55,6 +55,12 @@ echo -n "Are you sure you want to apply the configuration above (Y/n)?"
 read text
 if [ "${text^^}" = "Y"]
 then
+
+sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf 
+
+mkdir "$PATH/$PROJECT/public_html/"
+mkdir "$PATH/$PROJECT/logs/"
+
 cat <<EOF >> /etc/hosts
 "$ip    $PROJECT"
 EOF
@@ -155,4 +161,7 @@ fi
 #}
 
 
-
+main(){
+	writeConfig
+}
+main

@@ -98,17 +98,17 @@ main()
 	createWebServices
 	detect_os
 	epel_url="http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
-	#yum update
-	#yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
+	yum update
+	yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
 
-	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-  #sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+	sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+  sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
 
-	#service iptables save
+	service iptables save
 
-	#sudo /sbin/chkconfig httpd on
-	#sudo /sbin/chkconfig nginx on
-  #sudo /sbin/chkconfig mysqld on
+	sudo /sbin/chkconfig httpd on
+	sudo /sbin/chkconfig nginx on
+  sudo /sbin/chkconfig mysqld on
   
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 	./RunConfig.sh
