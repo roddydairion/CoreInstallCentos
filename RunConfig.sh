@@ -7,6 +7,7 @@ preConfig ()
 	if [ -z "$text"]
 	then
 		echo "Unchanged hostname $hostnameDisplay"
+		hNAME="$hostnameDisplay"
 	else
 		hNAME="$text"
 	fi
@@ -35,7 +36,7 @@ preConfig ()
 		exit 0
 	elif [ -n "$ip" ]
 	then
-		echo $ip
+		#echo $ip
 		break
 	else
 		echo "Invalid choice"
@@ -45,7 +46,7 @@ preConfig ()
 
 writeConfig(){
 preConfig
-echo "Hostname            : $hName"
+echo "Hostname            : $hNAME"
 echo "DocumentRoot        : $PATH"
 echo "Domain/Project name : $PROJECT"
 echo "Email               : $EMAIL"
