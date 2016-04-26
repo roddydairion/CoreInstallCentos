@@ -72,7 +72,7 @@ file="/etc/httpd/conf.d/vhost.conf"
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
 then
-  echo -e "Existing Apache configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT"
+  echo -e "Existing Apache configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT\n\n"
 else
 /bin/cat <<EOF >> "$file"
 #Creating apache config for Vhost $PROJECT
@@ -96,7 +96,7 @@ file="/etc/nginx/conf.d/virtual.conf"
 
 if /bin/grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
 then
-  echo -e "Existing Nginx configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT"
+  echo -e "Existing Nginx configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT\n\n"
 else
 /bin/cat <<EOF >> "$file"
 
@@ -130,6 +130,8 @@ then
 fi
 }
 
+$(WebServices restart)
+echo "Configuration completed."
 #echo "You entered: $text"
 #nano /etc/httpd/conf.d/vhost.conf
 #<VirtualHost *:8080>
