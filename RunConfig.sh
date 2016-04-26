@@ -2,7 +2,6 @@
 
 echo -n "Enter Hostname (Leave blank if you do not wish to change current hostname): "
 read text
-echo "$test"
 if [ -z "$text"]
 then
 	echo "Unchanged hostname"
@@ -19,7 +18,7 @@ then
 else
 	path="$text"
 fi
-
+echo "$path"
 while read -p "Enter domain name/project name (eg: example.com, project1.example.com): " PNAME && [[ -z "$PNAME" ]] ; do
 	echo "You need to enter a domain name/project name!"
 done
