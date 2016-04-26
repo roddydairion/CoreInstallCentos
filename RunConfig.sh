@@ -90,8 +90,6 @@ cat <<EOF >> "$file"
      </Directory>
 </VirtualHost>
 EOF
-fi
-
 ###Configuration of Nginx Virtual host
 file=" /etc/nginx/conf.d/virtual.conf"
 cat <<EOF >> "$file"
