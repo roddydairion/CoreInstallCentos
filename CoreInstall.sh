@@ -101,7 +101,7 @@ main()
 	#yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
 
 	#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-  	#sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+  #sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
 
 	#service iptables save
 
@@ -110,7 +110,6 @@ main()
   #sudo /sbin/chkconfig mysqld on
   
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-  echo "Working directory is $DIR"
 	./RunConfig.sh
 }
 main
