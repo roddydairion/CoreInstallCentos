@@ -63,19 +63,19 @@ $(/bin/sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf)
 $(/bin/mkdir "$PATH/$PROJECT/public_html/")
 $(/bin/mkdir "$PATH/$PROJECT/logs/")
 
-cat <<EOF >> /etc/hosts
+/bin/cat <<EOF >> /etc/hosts
 "$ip    $PROJECT"
 EOF
 
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-if [ -f "$file" ]
-then
-  echo "$file Vhost file found."
-else
-  echo "$file not found. Creating file."
-cat <<EOF >> /etc/httpd/conf.d/vhost.conf
+#if [ -f "$file" ]
+#then
+#  echo "$file Vhost file found."
+#else
+#  echo "$file not found. Creating file."
+cat <<EOF >> "$file"
 
 #Creating config for Vhost $PROJECT
 <VirtualHost *:8080>
@@ -94,7 +94,7 @@ fi
 
 ###Configuration of Nginx Virtual host
 file=" /etc/nginx/conf.d/virtual.conf"
-cat <<EOF >> /etc/httpd/conf.d/vhost.conf
+cat <<EOF >> "$file"
 
 #Creating config for Vhost $PROJECT
 server {
