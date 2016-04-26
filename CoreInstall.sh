@@ -108,10 +108,10 @@ main()
 
 	#sudo /sbin/chkconfig httpd on
 	#sudo /sbin/chkconfig nginx on
-  	#sudo /sbin/chkconfig mysqld on
+  #sudo /sbin/chkconfig mysqld on
   
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-  echo "$DIR"
+  echo "Working directory is $DIR"
 	./RunConfig.sh
 }
 main
