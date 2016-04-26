@@ -70,7 +70,7 @@ EOF
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-if grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
+if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
 then
   echo "Skipping Configuration on Apache Virtuals Host for $PROJECT"
 else
@@ -94,7 +94,7 @@ fi
 ###Configuration of Nginx Virtual host
 file="/etc/nginx/conf.d/virtual.conf"
 
-if grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
+if /bin/grep -q "#Creating nginx config for Vhost $PROJECT" "${file}"
 then
   echo "Skipping Configuration on Nginx Virtuals Host for $PROJECT"
 else
