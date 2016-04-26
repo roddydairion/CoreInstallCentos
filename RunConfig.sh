@@ -19,11 +19,9 @@ else
 	path="$text"
 fi
 
-while read -s -p "Enter domain name/project name (eg: example.com, project1.example.com): " NEWPASS && [[ -z "$NEWPASS" ]] ; do
- echo "No-no, please, no blank passwords!"
+while read -n "Enter domain name/project name (eg: example.com, project1.example.com): " PNAME && [[ -z "$PNAME" ]] ; do
+	echo "You need to enter a domain name/project name!"
 done
-
-
 
 file="/etc/httpd/conf.d/vhost.conf"
 
