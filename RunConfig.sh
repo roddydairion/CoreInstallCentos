@@ -21,9 +21,9 @@ fi
 
 echo -n "Enter domain name/project name (eg: example.com, project1.example.com): "
 read text
-while [ -z "$text" ]
+while [[ -z "$text" ]]
 do
-	echo -n "Enter domain name/project name (eg: example.com, project1.example.com): "
+  read -s -p "Enter domain name/project name (eg: example.com, project1.example.com): "
 done
 
 file="/etc/httpd/conf.d/vhost.conf"
