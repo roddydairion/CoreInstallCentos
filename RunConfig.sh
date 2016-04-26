@@ -2,16 +2,18 @@
 
 echo -n "Enter Hostname (Leave blank if you do not wish to change current hostname): "
 read text
+echo "$test"
 if [ -z "$text"]
 then
 	echo "Unchanged hostname"
 else
-	echo "HOSTNAME=$text" >> /etc/sysconfig/network
-	hostname "$text"
+	#echo "HOSTNAME=$text" >> /etc/sysconfig/network
+	#hostname "$text"
 fi
 
 echo -n "Enter path to DocumentRoot (/var/www/html/):"
 read text
+
 if [ -z "$text" ]
 then
 	path="/var/www/html"
@@ -19,7 +21,7 @@ else
 	path="$text"
 fi
 
-while read -n "Enter domain name/project name (eg: example.com, project1.example.com): " PNAME && [[ -z "$PNAME" ]] ; do
+while read -p "Enter domain name/project name (eg: example.com, project1.example.com): " PNAME && [[ -z "$PNAME" ]] ; do
 	echo "You need to enter a domain name/project name!"
 done
 
