@@ -91,7 +91,7 @@ file="/etc/httpd/conf.d/vhost.conf"
 </VirtualHost>
 EOF
 ###Configuration of Nginx Virtual host
-file=" /etc/nginx/conf.d/virtual.conf"
+file="/etc/nginx/conf.d/virtual.conf"
 /bin/cat <<EOF >> "$file"
 
 #Creating config for Vhost $PROJECT
