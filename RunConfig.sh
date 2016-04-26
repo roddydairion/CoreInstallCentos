@@ -130,7 +130,7 @@ then
 fi
 }
 
-$(WebServices restart)
+WebServices restart
 echo "Configuration completed."
 #echo "You entered: $text"
 #nano /etc/httpd/conf.d/vhost.conf
