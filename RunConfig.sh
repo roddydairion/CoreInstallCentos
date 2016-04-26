@@ -7,6 +7,7 @@ preConfig ()
 	if [ -z "$text"]
 	then
 		echo "Unchanged hostname $hostnameDisplay"
+		hName="$hostnameDisplay"
 	else
 		hNAME="$text"
 	fi
@@ -30,7 +31,20 @@ preConfig ()
 
 
 	echo "Select an IP address to assign to domain name/project name: "
-	./runListIP.sh
+	listIP= $(/sbin/ifconfig | /bin/awk '/inet addr/{print substr($2,6)}')
+	select ip in "$listIP"; do 
+	if [ "$ip" = "exit" ]
+	then
+		exit 0
+	elif [ -n "$ip" ]
+	then
+		IP="$ip"
+		#echo $ip
+		break
+	else
+		echo "Invalid choice"
+	fi
+	done
 }
 
 writeConfig(){
@@ -39,7 +53,7 @@ echo "Hostname            : $hName"
 echo "DocumentRoot        : $PATH"
 echo "Domain/Project name : $PROJECT"
 echo "Email               : $EMAIL"
-echo "IP Assigned         : $ip"
+echo "IP Assigned         : $ÏP"
 
 echo -n "Are you sure you want to apply the configuration above (Y/n)?"
 read text
