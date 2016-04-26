@@ -124,14 +124,15 @@ location ~ /\.ht {
 }
 EOF
 fi
+WebServices restart
+echo "Configuration completed."
 elif [ $choice == "N" ]
 then
 	preConfig
 fi
 }
 
-WebServices restart
-echo "Configuration completed."
+
 #echo "You entered: $text"
 #nano /etc/httpd/conf.d/vhost.conf
 #<VirtualHost *:8080>
