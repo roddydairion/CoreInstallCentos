@@ -6,9 +6,8 @@ if [ -z "$text"]
 then
 	echo "Unchanged hostname"
 else
-	#echo "HOSTNAME=$text" >> /etc/sysconfig/network
-	#hostname "$text"
-	echo "$text"
+	echo "HOSTNAME=$text" >> /etc/sysconfig/network
+	hostname "$text"
 fi
 
 echo -n "Enter path to DocumentRoot (/var/www/html/):"
@@ -19,11 +18,11 @@ then
 else
 	path="$text"
 fi
-echo "$path"
-while read -p "Enter domain name/project name (eg: example.com, project1.example.com): " PNAME && [[ -z "$PNAME" ]] ; do
+
+while read -p "Enter domain name/project name (eg: example.com, project1.example.com): " PROJECT && [[ -z "$PROJECT" ]] ; do
 	echo "You need to enter a domain name/project name!"
 done
-
+echo $path/$PROJECT
 file="/etc/httpd/conf.d/vhost.conf"
 
 if [ -f "$file" ]
@@ -34,11 +33,11 @@ else
 cat > /etc/httpd/conf.d/vhost.conf << EOF1
 <VirtualHost *:8080>
      ServerAdmin roddy@orange.mu
-     ServerName roddy.wikaba.com
-     ServerAlias roddy.wikaba.com
-     DocumentRoot /var/www/html/roddy.wikaba.com/public_html/
-     ErrorLog /var/www/html/roddy.wikaba.com/logs/error.log
-     CustomLog /var/www/html/roddy.wikaba.com/logs/access.log combined
+     ServerName "$path"
+     ServerAlias "$path"
+     DocumentRoot "$path/$PROJECT"/public_html/
+     ErrorLog /var/www/html/"$path"/logs/error.log
+     CustomLog /var/www/html/"$path"/logs/access.log combined
      <Directory />
      AllowOverride All
      </Directory>
