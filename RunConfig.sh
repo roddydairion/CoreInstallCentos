@@ -75,11 +75,11 @@ EOF
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-if /bin/grep -q "NameVirtualHost *:8080" "${file}"
+if /bin/grep -F "NameVirtualHost *:8080" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
- 	$(/bin/sed -i '1s/^/NameVirtualHost *:8081\n/' "${file}")
+ 	$(/bin/sed -i '1s/^/NameVirtualHost *:8080\n/' "${file}")
 fi
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
