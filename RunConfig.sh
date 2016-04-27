@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$PATH"
+export PATH=$PATH:/usr/local/bin
 
 preConfig ()
 {
