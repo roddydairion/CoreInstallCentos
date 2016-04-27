@@ -69,17 +69,17 @@ $(/bin/mkdir -p "$PATH/$PROJECT/public_html/")
 $(/bin/mkdir -p "$PATH/$PROJECT/logs/")
 
 /bin/cat <<EOF >> /etc/hosts
-"$ip    $PROJECT"
+$ip    $PROJECT
 EOF
 
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-if /bin/grep -q "NameVirtualHost *:8080\n" "${file}"
+if /bin/grep -q "NameVirtualHost *:8080" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
- 	$(/bin/sed -i '1s/^/NameVirtualHost *:8080\n/' "${file}")
+ 	$(/bin/sed -i '1s/^/NameVirtualHost *:8081\n/' "${file}")
 fi
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
