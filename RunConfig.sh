@@ -1,6 +1,4 @@
 #!/bin/bash
-export PATH=$PATH:/usr/local/bin
-
 preConfig ()
 {
 	hostnameDisplay=$(/bin/hostname -f)
@@ -47,6 +45,8 @@ preConfig ()
 }
 
 writeConfig(){
+export PATH=$PATH:/usr/local/bin
+echo "$PATH"
 preConfig
 echo "Hostname            : $hNAME"
 echo "DocumentRoot        : $PATH"
