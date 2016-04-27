@@ -68,9 +68,14 @@ fi
 $(/bin/mkdir -p "$PATH/$PROJECT/public_html/")
 $(/bin/mkdir -p "$PATH/$PROJECT/logs/")
 
+if /bin/grep -q "$ip    $PROJECT" "/etc/hosts"
+then
+	"Host already exits"
+else
 /bin/cat <<EOF >> /etc/hosts
 $ip    $PROJECT
 EOF
+fi
 
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
