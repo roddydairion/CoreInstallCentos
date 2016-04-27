@@ -60,7 +60,7 @@ then
 
 if /bin/grep -q "Listen 80" "/etc/httpd/conf/httpd.conf"
 then
-	$(/bin/sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf)
+	$(/bin/sed -i -e 's/\<\Listen\ \80\>/Listen 8080/g' /etc/httpd/conf/httpd.conf)
 else
 	echo "Already listening on port 8080"
 fi
