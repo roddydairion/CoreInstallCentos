@@ -131,7 +131,7 @@ else
 	}
 EOF
 fi
-	$(WebServices restart)
+	$(/usr/bin/local/WebServices restart)
 	echo "Configuration completed."
 elif [ $choice == "N" ]
 then
