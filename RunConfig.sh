@@ -142,7 +142,7 @@ location ~ /\.ht {
 }
 EOF
 fi
-	$(WebServices restart)
+	$(/usr/local/bin/WebServices restart)
 	echo "Configuration completed."
 elif [ $choice == "N" ]
 then
