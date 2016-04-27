@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "$PATH"
+
 preConfig ()
 {
 	hostnameDisplay=$(/bin/hostname -f)
