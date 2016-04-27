@@ -58,7 +58,12 @@ choice="${text^^}"
 if [ $choice == "Y" ]
 then
 
-$(/bin/sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf)
+if /bin/grep -q "Listen 80" "/etc/httpd/conf/httpd.conf"
+then
+	$(/bin/sed -i -e 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf)
+else
+	echo "Already listening on port 8080"
+fi
 
 $(/bin/mkdir -p "$PATH/$PROJECT/public_html/")
 $(/bin/mkdir -p "$PATH/$PROJECT/logs/")
@@ -74,7 +79,7 @@ if /bin/grep -q "NameVirtualHost *:8080" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
- 	$(/bin/sed -i '1s/^/NameVirtualHost *:80\n/' "${file}")
+ 	$(/bin/sed -i '1s/^/NameVirtualHost *:8080\n/' "${file}")
 fi
 
 if /bin/grep -q "#Creating apache config for Vhost $PROJECT" "${file}"
