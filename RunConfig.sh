@@ -87,18 +87,18 @@ then
   echo -e "Existing Apache configuration found for $PROJECT.\nSkipping Configuration on Apache Virtuals Host for $PROJECT\n\n"
 else
 	/bin/cat <<EOF >> "$file"
-	#Creating apache config for Vhost $PROJECT
-	<VirtualHost *:8080>
-	     ServerAdmin $EMAIL
-	     ServerName $PATH
-	     ServerAlias $PATH
-	     DocumentRoot $PATH/$PROJECT/public_html/
-	     ErrorLog $PATH/$PROJECT/logs/error.log
-	     CustomLog $PATH/$PROJECT/logs/access.log combined
-	     <Directory />
-	     AllowOverride All
-	     </Directory>
-	</VirtualHost>
+#Creating apache config for Vhost $PROJECT
+<VirtualHost *:8080>
+     ServerAdmin $EMAIL
+     ServerName $PATH
+     ServerAlias $PATH
+     DocumentRoot $PATH/$PROJECT/public_html/
+     ErrorLog $PATH/$PROJECT/logs/error.log
+     CustomLog $PATH/$PROJECT/logs/access.log combined
+     <Directory />
+     AllowOverride All
+     </Directory>
+</VirtualHost>
 EOF
 fi
 
@@ -111,29 +111,28 @@ then
   echo -e "Existing Nginx configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT\n\n"
 else
 	/bin/cat <<EOF >> "$file"
+#Creating nginx config for Vhost $PROJECT
+server {
+ listen 80;
+root $PATH/$PROJECT/public_html/;
+ index index.php index.html index.htm;
+server_name $PROJECT;
+location / {
+ try_files $uri $uri/ /index.php;
+ }
+location ~ \.php$ {
 
-	#Creating nginx config for Vhost $PROJECT
-	server {
-	 listen 80;
-	root $PATH/$PROJECT/public_html/;
-	 index index.php index.html index.htm;
-	server_name $PROJECT;
-	location / {
-	 try_files $uri $uri/ /index.php;
-	 }
-	location ~ \.php$ {
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $remote_addr;
+ proxy_set_header Host $host;
+ proxy_pass http://127.0.0.1:8080;
 
-	 proxy_set_header X-Real-IP $remote_addr;
-	 proxy_set_header X-Forwarded-For $remote_addr;
-	 proxy_set_header Host $host;
-	 proxy_pass http://127.0.0.1:8080;
+}
 
-	}
-
-	location ~ /\.ht {
-	 deny all;
-	 }
-	}
+location ~ /\.ht {
+ deny all;
+ }
+}
 EOF
 fi
 	$(/usr/bin/local/WebServices restart)
