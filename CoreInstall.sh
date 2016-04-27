@@ -86,6 +86,7 @@ cat > /usr/local/bin/WebServices.sh << EOF1
 $(/etc/init.d/httpd "\$1")
 $(/etc/init.d/nginx "\$1")
 $(/etc/init.d/mysqld "\$1")
+
 EOF1
 install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
 fi
