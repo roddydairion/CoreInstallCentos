@@ -68,7 +68,7 @@ fi
 $(/bin/mkdir -p "$PATH/$PROJECT/public_html/")
 $(/bin/mkdir -p "$PATH/$PROJECT/logs/")
 
-if /bin/grep -q "$ip    $PROJECT" "/etc/hosts"
+if /bin/grep -F "$ip    $PROJECT" "/etc/hosts"
 then
 	"Host already exits"
 else
