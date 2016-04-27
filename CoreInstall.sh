@@ -83,9 +83,9 @@ else
   echo "$file not found. Creating file."
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
-services httpd "\$1"
-services nginx "\$1"
-services mysqld "\$1"
+/sbin/service httpd "\$1"
+/sbin/service nginx "\$1"
+/sbin/service mysqld "\$1"
 EOF1
 install /usr/local/bin/WebServices.sh /usr/local/bin/WebServices
 fi
