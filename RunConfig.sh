@@ -70,7 +70,7 @@ $(/bin/mkdir -p "$PATH/$PROJECT/logs/")
 
 if /bin/grep -F "$ip    $PROJECT" "/etc/hosts"
 then
-	"Host already exits"
+	echo "Host already exits"
 else
 /bin/cat <<EOF >> /etc/hosts
 $ip    $PROJECT
@@ -140,7 +140,7 @@ location ~ /\.ht {
 }
 EOF
 fi
-	$(/usr/bin/local/WebServices restart)
+	$(/usr/local/bin/WebServices restart)
 	echo "Configuration completed."
 elif [ $choice == "N" ]
 then
