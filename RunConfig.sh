@@ -75,7 +75,7 @@ EOF
 ###Configuration of Apache Virtual Host
 file="/etc/httpd/conf.d/vhost.conf"
 
-if /bin/grep -q "NameVirtualHost *:8080" "${file}"
+if /bin/grep -q "NameVirtualHost *:8080\n" "${file}"
 then
 	echo "Name Virtuals Host exists."
 else
