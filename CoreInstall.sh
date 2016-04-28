@@ -101,7 +101,7 @@ main()
 	detect_os
 	epel_url="http://dl.fedoraproject.org/pub/epel/${os}/x86_64/epel-release-6-8.noarch.rpm"
 	yum update
-	yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql
+	yum install -y nginx nano apacheyum mysql-server install httpd mod_ssl php php-pear php-devel php-mysql wget
 
 	sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
   sudo iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
