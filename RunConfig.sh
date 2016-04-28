@@ -141,6 +141,7 @@ location ~ /\.ht {
 }
 EOF
 fi
+	echo -e "\nRestarting WebServices Nginx,Mysql and Apache"
 	/etc/init.d/httpd restart
 	/etc/init.d/mysqld restart
 	/etc/init.d/nginx restart
