@@ -6,7 +6,7 @@ preConfig ()
 	read text
 	if [ -z "$text"]
 	then
-		echo "Unchanged hostname $hostnameDisplay"
+		echo "hostname $hostnameDisplay"
 		hNAME="$hostnameDisplay"
 	else
 		hNAME="$text"
@@ -47,11 +47,11 @@ preConfig ()
 writeConfig(){
 export PATH=$PATH:/usr/local/bin
 preConfig
-echo "Hostname            : $hNAME"
+echo -e "\nHostname            : $hNAME"
 echo "DocumentRoot        : $PATH"
 echo "Domain/Project name : $PROJECT"
 echo "Email               : $EMAIL"
-echo "IP Assigned         : $ip"
+echo -e "IP Assigned         : $ip\n"
 
 echo -n "Are you sure you want to apply the configuration above (Y/n)?"
 read text
@@ -117,6 +117,7 @@ then
   echo -e "Existing Nginx configuration found for $PROJECT.\nSkipping Configuration on Nginx Virtuals Host for $PROJECT\n\n"
 else
 	/bin/cat <<EOF >> "$file"
+
 #Creating nginx config for Vhost $PROJECT
 server {
  listen 80;
