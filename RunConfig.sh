@@ -141,11 +141,11 @@ location ~ /\.ht {
 }
 EOF
 fi
-	$(service httpd restart)
-	$(service mysqld restart)
-	$(service nginx restart)
+	$(/sbin/service httpd restart)
+	$(/sbin/service mysqld restart)
+	$(/sbin/service nginx restart)
 	echo "Configuration completed."
-	echo "use `WebServices restart` to restart Nginx,Mysql and Apache"
+	echo "use 'WebServices restart' to restart Nginx,Mysql and Apache"
 elif [ $choice == "N" ]
 then
 	preConfig
