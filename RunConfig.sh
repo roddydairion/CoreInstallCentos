@@ -46,7 +46,6 @@ preConfig ()
 
 writeConfig(){
 export PATH=$PATH:/usr/local/bin
-echo "$PATH"
 preConfig
 echo "Hostname            : $hNAME"
 echo "DocumentRoot        : $PATH"
@@ -142,8 +141,11 @@ location ~ /\.ht {
 }
 EOF
 fi
-	$(/usr/local/bin/WebServices restart)
+	$(service httpd restart)
+	$(service mysqld restart)
+	$(service nginx restart)
 	echo "Configuration completed."
+	echo "use `WebServices restart` to restart Nginx,Mysql and Apache"
 elif [ $choice == "N" ]
 then
 	preConfig

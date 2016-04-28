@@ -83,6 +83,7 @@ else
   echo "$file not found. Creating file."
 cat > /usr/local/bin/WebServices.sh << EOF1
 #!/bin/bash
+export PATH=$PATH:/usr/local/bin
 $(/etc/init.d/httpd "\$1")
 $(/etc/init.d/nginx "\$1")
 $(/etc/init.d/mysqld "\$1")
