@@ -145,6 +145,7 @@ fi
 	/etc/init.d/httpd restart
 	/etc/init.d/mysqld restart
 	/etc/init.d/nginx restart
+	/usr/bin/mysql_secure_installation
 	echo "Configuration completed."
 	echo "use 'WebServices restart' to restart Nginx,Mysql and Apache"
 elif [ $choice == "N" ]
