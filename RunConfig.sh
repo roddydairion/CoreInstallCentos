@@ -96,8 +96,8 @@ else
 #Creating apache config for Vhost $PROJECT
 <VirtualHost *:8080>
      ServerAdmin $EMAIL
-     ServerName $PATH
-     ServerAlias $PATH
+     ServerName $PROJECT
+     ServerAlias $PROJECT
      DocumentRoot $PATH/$PROJECT/public_html/
      ErrorLog $PATH/$PROJECT/logs/error.log
      CustomLog $PATH/$PROJECT/logs/access.log combined
@@ -125,7 +125,7 @@ root $PATH/$PROJECT/public_html/;
  index index.php index.html index.htm;
 server_name $PROJECT;
 location / {
- try_files $uri $uri/ /index.php;
+ try_files \$uri \$uri/ /index.php;
  }
 location ~ \.php$ {
 
