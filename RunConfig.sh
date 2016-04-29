@@ -2,8 +2,7 @@
 preConfig ()
 {
 	hostnameDisplay=$(/bin/hostname -f)
-	echo -n "Enter Hostname (Leave blank if you do not wish to change current hostname. Current Hostname $hostnameDisplay): "
-	read text
+	read -n "Enter Hostname (Leave blank if you do not wish to change current hostname. Current Hostname $hostnameDisplay): " text
 	if [ -z "$text"]
 	then
 		echo "hostname $hostnameDisplay"
