@@ -2,10 +2,10 @@
 preConfig ()
 {
 	hostnameDisplay=$(/bin/hostname -f)
-	if read -p "Enter Hostname (Leave blank if you do not wish to change current hostname. Current Hostname $hostnameDisplay): " text && [[ -z text ]]
+	echo -p "Enter Hostname (Leave blank if you do not wish to change current hostname. Current Hostname $hostnameDisplay): "
+	read text
+	if [ -z "$text" ]
 	then
-	#if [ -z "$text"]
-	#then
 		echo "hostname $hostnameDisplay"
 		hNAME="$hostnameDisplay"
 	else
